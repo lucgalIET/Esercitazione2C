@@ -1,18 +1,18 @@
 package it.biblioteca.progettoBiblioteca.controller;
 
-<<<<<<< HEAD
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-=======
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
->>>>>>> origin/main
+
 
 @RestController
 @RequestMapping("/api/libro")
 public class LibroController {
 
-<<<<<<< HEAD
+
     @Autowired
     private LibroService libroService;
 
@@ -40,6 +40,4 @@ public class LibroController {
     public void deleteLibro(@PathVariable Long id){
         libroService.deleteLibro(id);
     }
-=======
->>>>>>> origin/main
 }

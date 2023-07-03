@@ -37,4 +37,8 @@ public class BibliotecaService {
     public void deleteBiblioteca(Long id){
         bibliotecaRepository.deleteById(id);
     }
+
+    public List<String> getTitoloLibroNomeBiblioteca(Long idLibro){
+        return bibliotecaRepository.getTitoloLibroNomeBiblioteca(Math.toIntExact(idLibro));
+    }
 }

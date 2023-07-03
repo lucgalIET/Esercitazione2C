@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "biblioteca")
 @NoArgsConstructor
@@ -24,7 +26,8 @@ public class BibliotecaEntity {
     @Column(name = "indirizzo")
     private String indirizzo;
 
-    @OneToMany
+    @OneToMany(mappedBy = "bibliotecaEntity")
     @JsonManagedReference
     private List<LibroEntity> listaLibroEntity;
+
 }

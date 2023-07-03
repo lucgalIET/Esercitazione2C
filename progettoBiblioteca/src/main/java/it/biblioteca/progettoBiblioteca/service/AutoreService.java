@@ -36,6 +36,9 @@ public class AutoreService {
         autoreRepository.deleteById(id);
     }
 
+    public List<AutoreEntity> getAutoriListDaID(Long id){
+        return autoreRepository.getAutoriListDaID(id);
+    }
 
 
 

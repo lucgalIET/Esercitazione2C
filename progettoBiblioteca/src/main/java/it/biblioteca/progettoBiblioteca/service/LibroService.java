@@ -36,4 +36,8 @@ public class LibroService {
     public void deleteLibro(Long id){
         libroRepository.deleteById(id);
     }
+
+    public List<LibroEntity> getLibriByBiliotecaId(Long id){
+        return libroRepository.getLibriByBiliotecaId(id);
+    }
 }

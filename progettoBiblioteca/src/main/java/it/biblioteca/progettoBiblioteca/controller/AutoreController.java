@@ -39,4 +39,9 @@ public class AutoreController {
     public void deleteAutore(@PathVariable Long id){
         autoreService.deleteAutore(id);
     }
+
+    @GetMapping("/autori-da/{id}")
+    public List<AutoreEntity> getAutoriListDaID(@PathVariable Long id){
+        return autoreService.getAutoriListDaID(id);
+    }
 }

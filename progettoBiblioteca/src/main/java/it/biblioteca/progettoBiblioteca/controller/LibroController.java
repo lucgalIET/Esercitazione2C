@@ -45,4 +45,9 @@ public class LibroController {
     public void deleteLibro(@PathVariable Long id){
         libroService.deleteLibro(id);
     }
+
+    @GetMapping("/libri-biblioteca/{id}")
+    public List<LibroEntity> getLibriByBiliotecaId(@PathVariable Long id){
+        return libroService.getLibriByBiliotecaId(id);
+    }
 }

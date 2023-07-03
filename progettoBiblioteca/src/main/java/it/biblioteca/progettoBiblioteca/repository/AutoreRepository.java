@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface AutoreRepository extends JpaRepository<AutoreEntity, Long> {
 
-    @Query(value = "SELECT *"+
-    "FROM autore a"+
+    @Query(value = "SELECT * "+
+    "FROM autore a "+
     "WHERE a.id > :id", nativeQuery = true)
     List<AutoreEntity> getAutoriListDaID(@Param("id") Long id);
 

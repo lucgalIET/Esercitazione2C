@@ -39,4 +39,9 @@ public class BibliotecaController {
     public void deleteBiblioteca(@PathVariable Long id){
         bibliotecaService.deleteBiblioteca(id);
     }
+
+    @GetMapping("/titolo-libro-biblioteca/{idLibro}")
+    public List<String> getTitoloLibroNomeBiblioteca(@PathVariable Long idLibro){
+        return bibliotecaService.getTitoloLibroNomeBiblioteca(idLibro);
+    }
 }

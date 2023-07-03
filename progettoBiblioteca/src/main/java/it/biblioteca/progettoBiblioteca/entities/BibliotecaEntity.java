@@ -27,6 +27,6 @@ public class BibliotecaEntity {
     private String indirizzo;
 
     @OneToMany(mappedBy = "bibliotecaEntity")
-    @JsonManagedReference
+    @JsonManagedReference(value="user-movement")
     private List<LibroEntity> listaLibroEntity;
 }

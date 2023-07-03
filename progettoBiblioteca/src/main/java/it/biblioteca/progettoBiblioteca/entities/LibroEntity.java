@@ -26,7 +26,7 @@ public class LibroEntity {
 
     @ManyToOne
     @JoinColumn(name = "biblioteca_fk")
-    @JsonBackReference
+    @JsonBackReference(value="user-movement")
     private BibliotecaEntity bibliotecaEntity;
 
     @ManyToOne

@@ -24,7 +24,7 @@ public class BibliotecaEntity {
     @Column(name = "indirizzo")
     private String indirizzo;
 
-//    @OneToMany
-//    @JsonManagedReference
-//    private List<LibroEntity> listaLibroEntity;
+    @OneToMany
+    @JsonManagedReference
+    private List<LibroEntity> listaLibroEntity;
 }

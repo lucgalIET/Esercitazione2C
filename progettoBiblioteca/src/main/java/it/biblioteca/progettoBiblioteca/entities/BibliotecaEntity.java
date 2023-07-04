@@ -26,7 +26,4 @@ public class BibliotecaEntity {
     @Column(name = "indirizzo")
     private String indirizzo;
 
-    @OneToMany(mappedBy = "bibliotecaEntity")
-    @JsonManagedReference(value="user-movement")
-    private List<LibroEntity> listaLibroEntity;
 }

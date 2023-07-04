@@ -23,7 +23,13 @@ public class AutoreEntity {
     @Column(name = "nome")
     private String nome;
 
-    @OneToMany(mappedBy = "autoreEntity")
+
+    @ManyToMany
+    @JoinTable(
+            name = "autore_libro",
+            joinColumns = @JoinColumn(name = "autore_fk"),
+            inverseJoinColumns = @JoinColumn(name = "libro_fk"))
     @JsonManagedReference
-    private List<LibroEntity> libroEntityList;
+    private List<LibroEntity>  listaLibri;
+
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name= "libro")
 @NoArgsConstructor
@@ -24,15 +26,16 @@ public class LibroEntity {
     @Column(name = "isbn")
     private String isbn;
 
-    @ManyToOne
-    @JoinColumn(name = "biblioteca_fk")
-    @JsonBackReference(value="user-movement")
-    private BibliotecaEntity bibliotecaEntity;
+    @Column(name = "genere")
 
     @ManyToOne
-    @JoinColumn(name = "autore_fk")
+    @JoinColumn(name = "biblioteca_fk")
+    private BibliotecaEntity bibliotecaEntity;
+
+
+    @ManyToMany(mappedBy = "listaLibri")
     @JsonBackReference
-    private AutoreEntity autoreEntity;
+    private List<AutoreEntity> listaAutore;
 
 }
 

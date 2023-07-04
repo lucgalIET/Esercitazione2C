@@ -27,6 +27,7 @@ public class LibroEntity {
     private String isbn;
 
     @Column(name = "genere")
+    private String genere;
 
     @ManyToOne
     @JoinColumn(name = "biblioteca_fk")

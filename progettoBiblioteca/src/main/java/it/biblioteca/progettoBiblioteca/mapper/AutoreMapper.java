@@ -15,7 +15,7 @@ public interface AutoreMapper {
     @Mapping(source = "cognome", target ="cognome")
     AutoreDTO entityToDTO(AutoreEntity autoreEntity);
 
-    @Mapping(source = "id", target = "idStudente")
+    @Mapping(source = "id", target = "id")
     @Mapping(source = "nome", target = "nome")
     @Mapping(source = "cognome", target = "cognome")
     AutoreEntity dtoToEntity(AutoreDTO autoreDTO);

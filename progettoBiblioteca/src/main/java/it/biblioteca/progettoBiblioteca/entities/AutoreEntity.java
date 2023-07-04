@@ -23,6 +23,15 @@ public class AutoreEntity {
     @Column(name = "nome")
     private String nome;
 
+    @Column(name = "cognome")
+    private String cognome;
+
+    @Column(name = "data_nascita")
+    private String dataDiNascita;
+
+    @Column(name = "nazione")
+    private String nazione;
+
 
     @ManyToMany
     @JoinTable(

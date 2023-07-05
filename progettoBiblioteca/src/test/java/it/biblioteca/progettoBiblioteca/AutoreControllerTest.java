@@ -76,6 +76,18 @@ public class AutoreControllerTest {
         verify(service, times(1)).deleteAutore(id);
     }
 
+    @Test
+    void queryAutore(){
+        List<AutoreEntity> autoreEntityList= new ArrayList<>();
+        autoreEntityList.add(new AutoreEntity(1L,"Paolo","Rossi","03/04/2000","Italia", new ArrayList<>(),new EditoreEntity()));
+        autoreEntityList.add(new AutoreEntity(2L,"Mario","Verdi","04/07/2002","Francia", new ArrayList<>(),new EditoreEntity()));
+
+        when(service.getAutoriListDaID(1L)).thenReturn(autoreEntityList);
+
+        List<AutoreEntity> result= controller.getAutoriListDaID(1L);
+
+        assertEquals(autoreEntityList, result );
+    }
 }
 
 

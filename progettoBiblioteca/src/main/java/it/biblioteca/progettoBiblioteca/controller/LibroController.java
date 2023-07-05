@@ -1,6 +1,7 @@
 package it.biblioteca.progettoBiblioteca.controller;
 
 
+import it.biblioteca.progettoBiblioteca.dto.LibroDTO;
 import it.biblioteca.progettoBiblioteca.entities.LibroEntity;
 import it.biblioteca.progettoBiblioteca.service.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,10 @@ public class LibroController {
     @GetMapping("/libri-biblioteca/{id}")
     public List<LibroEntity> getLibriByBiliotecaId(@PathVariable Long id){
         return libroService.getLibriByBiliotecaId(id);
+    }
+
+    @GetMapping("/libriDTO")
+    public List<LibroDTO> getLibriDTO(){
+        return libroService.getLibroDTO();
     }
 }

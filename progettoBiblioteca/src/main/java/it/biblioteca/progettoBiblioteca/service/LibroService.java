@@ -1,10 +1,13 @@
 package it.biblioteca.progettoBiblioteca.service;
 
+import it.biblioteca.progettoBiblioteca.dto.LibroDTO;
 import it.biblioteca.progettoBiblioteca.entities.LibroEntity;
+import it.biblioteca.progettoBiblioteca.mapper.LibroMapper;
 import it.biblioteca.progettoBiblioteca.repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +42,14 @@ public class LibroService {
 
     public List<LibroEntity> getLibriByBiliotecaId(Long id){
         return libroRepository.getLibriByBiliotecaId(id);
+    }
+
+    public List<LibroDTO> getLibroDTO(){
+        List<LibroEntity> listaLibri = libroRepository.findAll();
+        List<LibroDTO> listaDTO = new ArrayList<>();
+        for(LibroEntity l: listaLibri){
+           listaDTO.add(LibroMapper.LIBRO_MAPPER.entityToDTO(l));
+        }
+        return listaDTO;
     }
 }

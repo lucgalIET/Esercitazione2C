@@ -30,7 +30,7 @@ public class BibliotecaController {
         return bibliotecaService.getBibliotecaById(id);
     }
 
-    @PostMapping("/update-biblioteca")
+    @PutMapping("/update-biblioteca")
     public BibliotecaEntity updateBiblioteca(@RequestBody BibliotecaEntity bibliotecaEntity){
         return bibliotecaService.updateBiblioteca(bibliotecaEntity);
     }

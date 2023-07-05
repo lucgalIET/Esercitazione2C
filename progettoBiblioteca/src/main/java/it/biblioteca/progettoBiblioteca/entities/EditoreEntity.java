@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name= "autore")
+@Table(name= "editore")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -21,11 +21,11 @@ public class EditoreEntity {
     private String nome;
 
     @Column(name = "partita_iva")
-    private int partitaIva;
+    private Long partitaIva;
 
     @Column(name = "contatto")
     private String contatto;
 
-    @OneToOne(mappedBy = "editore")
-    private AutoreEntity autore;
+//    @OneToOne(mappedBy = "editore")
+//    private AutoreEntity autore;
 }

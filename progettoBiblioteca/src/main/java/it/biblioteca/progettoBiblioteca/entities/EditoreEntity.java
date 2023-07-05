@@ -1,7 +1,6 @@
 package it.biblioteca.progettoBiblioteca.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -12,4 +11,21 @@ import lombok.*;
 @Setter
 @ToString
 public class EditoreEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "nome")
+    private String nome;
+
+    @Column(name = "partita_iva")
+    private int partitaIva;
+
+    @Column(name = "contatto")
+    private String contatto;
+
+    @OneToOne(mappedBy = "editore")
+    private AutoreEntity autore;
 }

@@ -41,4 +41,10 @@ public class AutoreEntity {
     @JsonManagedReference
     private List<LibroEntity>  listaLibri;
 
+    @OneToOne
+    @JoinColumn(name = "editore_fk", referencedColumnName = "id")
+    private EditoreEntity editore;
+
+
+
 }

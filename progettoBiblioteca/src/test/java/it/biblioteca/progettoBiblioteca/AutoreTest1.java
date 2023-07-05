@@ -9,6 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
 @SpringBootTest
 public class AutoreTest1 {
 
@@ -27,6 +33,23 @@ public class AutoreTest1 {
         autore1.setCognome("Conte");
         autore1.setDataDiNascita("03/04/1987");
         autore1.setNazione("Italia");
-        autore1.setListaLibri(new LibroEntity(1L, "Harry Potter", "2233", "fantasy",1));
+
+        AutoreEntity autore2= new AutoreEntity();
+        autore2.setId(2L);
+        autore2.setNome("Mario");
+        autore2.setCognome("Rossi");
+        autore2.setDataDiNascita("03/01/1990");
+        autore2.setNazione("Francia");
+
+
+        List<AutoreEntity> autoreEntity= Arrays.asList(autore1,autore2);
+
+        when(autoreRepository.findAll()).thenReturn(autoreEntity);
+
+        List<AutoreEntity> result= autoreService.getAllAutori();
+
+        assertEquals(2, result.size());
+        assertEquals("Italia", result.get(0).getNazione());
+        assertEquals("Mario",result.get(1).getNome());
     }
 }

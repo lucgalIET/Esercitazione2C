@@ -35,7 +35,7 @@ public class BibliotecaController {
         return bibliotecaService.updateBiblioteca(bibliotecaEntity);
     }
 
-    @GetMapping("/delete-biblioteca/{id}")
+    @DeleteMapping("/delete-biblioteca/{id}")
     public void deleteBiblioteca(@PathVariable Long id){
         bibliotecaService.deleteBiblioteca(id);
     }

@@ -56,4 +56,19 @@ public class LibroController {
     public List<LibroDTO> getLibriDTO(){
         return libroService.getLibroDTO();
     }
+
+    @GetMapping("/DTO/{id}")
+    public LibroDTO getDTOById(@PathVariable Long id){
+        return libroService.getLibroDTOById(id);
+    }
+
+    @PostMapping("/saveDTO")
+    public LibroDTO saveLibroDTO(@RequestBody LibroDTO libroDTO){
+        return libroService.saveLibroDTO(libroDTO);
+    }
+
+    @PutMapping("/updateDTO")
+    public LibroDTO updateDTO(@RequestBody LibroDTO libroDTO){
+        return libroService.updateLibroDTO(libroDTO);
+    }
 }

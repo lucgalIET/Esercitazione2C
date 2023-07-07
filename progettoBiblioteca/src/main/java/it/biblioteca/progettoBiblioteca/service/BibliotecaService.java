@@ -1,10 +1,16 @@
 package it.biblioteca.progettoBiblioteca.service;
 
+import it.biblioteca.progettoBiblioteca.dto.BibliotecaDTO;
+import it.biblioteca.progettoBiblioteca.dto.LibroDTO;
 import it.biblioteca.progettoBiblioteca.entities.BibliotecaEntity;
+import it.biblioteca.progettoBiblioteca.entities.LibroEntity;
+import it.biblioteca.progettoBiblioteca.mapper.BibliotecaMapper;
+import it.biblioteca.progettoBiblioteca.mapper.LibroMapper;
 import it.biblioteca.progettoBiblioteca.repository.BibliotecaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,4 +47,30 @@ public class BibliotecaService {
     public List<String> getTitoloLibroNomeBiblioteca(Long idLibro){
         return bibliotecaRepository.getTitoloLibroNomeBiblioteca(Math.toIntExact(idLibro));
     }
+
+    //CRUD DTO
+    public BibliotecaEntity saveBibliotecaDTO(BibliotecaDTO bibliotecaDTO){
+        BibliotecaEntity biblioteca= BibliotecaMapper.BIBLIOTECA_MAPPER.dtoToEntity(bibliotecaDTO);
+
+        return bibliotecaRepository.save(biblioteca);
+    }
+
+
+    public List<BibliotecaDTO> getBibliotecheDTO(){
+        List<BibliotecaEntity> listaBiblioteche = bibliotecaRepository.findAll();
+        List<BibliotecaDTO> listaBibliotecheDTO = new ArrayList<>();
+        for(BibliotecaEntity b: listaBiblioteche){
+            listaBibliotecheDTO.add(BibliotecaMapper.BIBLIOTECA_MAPPER.entityToDto(b));
+        }
+        return listaBibliotecheDTO;
+
+    }
+
+    public BibliotecaDTO getBibliotecaDTOById(Long id){
+        Optional<BibliotecaEntity> bibliotecaEntity= bibliotecaRepository.findById(id);
+        return bibliotecaEntity.map(BibliotecaMapper.BIBLIOTECA_MAPPER::entityToDto).orElse(null);
+    }
+
+
+
 }

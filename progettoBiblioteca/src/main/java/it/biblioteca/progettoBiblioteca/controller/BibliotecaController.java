@@ -1,5 +1,6 @@
 package it.biblioteca.progettoBiblioteca.controller;
 
+import it.biblioteca.progettoBiblioteca.dto.BibliotecaDTO;
 import it.biblioteca.progettoBiblioteca.entities.BibliotecaEntity;
 import it.biblioteca.progettoBiblioteca.service.BibliotecaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,22 @@ public class BibliotecaController {
     @GetMapping("/titolo-libro-biblioteca/{idLibro}")
     public List<String> getTitoloLibroNomeBiblioteca(@PathVariable Long idLibro){
         return bibliotecaService.getTitoloLibroNomeBiblioteca(idLibro);
+    }
+
+    //CRUD DTO
+
+    @PostMapping("/save-bibliotecadto")
+    public BibliotecaEntity saveBibliotecaDTO(@RequestBody BibliotecaDTO bibliotecaDTO){
+        return bibliotecaService.saveBibliotecaDTO(bibliotecaDTO);
+    }
+
+    @GetMapping("/bibliotechedto")
+    public List<BibliotecaDTO> getBibliotecheDTO(){
+        return bibliotecaService.getBibliotecheDTO();
+    }
+
+    @GetMapping("/bibliotecadto/{id}")
+    public BibliotecaDTO getBibliotecaDTOById(@PathVariable Long id){
+        return bibliotecaService.getBibliotecaDTOById(id);
     }
 }

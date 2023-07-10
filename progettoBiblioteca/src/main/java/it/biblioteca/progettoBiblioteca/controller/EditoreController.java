@@ -1,5 +1,6 @@
 package it.biblioteca.progettoBiblioteca.controller;
 
+import it.biblioteca.progettoBiblioteca.dto.EditoreDTO;
 import it.biblioteca.progettoBiblioteca.entities.EditoreEntity;
 import it.biblioteca.progettoBiblioteca.service.EditoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,25 @@ public class EditoreController {
     @DeleteMapping("/{id}")
     public void deleteEditore(@PathVariable Long id){
         editoreService.deleteEditore(id);
+    }
+
+    @GetMapping("/editoreDTO")
+    public List<EditoreDTO> getEditoriDTO(){
+        return editoreService.getEditoreDTO();
+    }
+
+    @GetMapping("/DTO/{id}")
+    public EditoreDTO getDTOById(@PathVariable Long id){
+        return editoreService.getEditoreDTOById(id);
+    }
+
+    @PostMapping("/saveDTO")
+    public EditoreDTO saveEditoreDTO(@RequestBody EditoreDTO editoreDTO){
+        return editoreService.saveEditoreDTO(editoreDTO);
+    }
+
+    @PutMapping("/updateDTO")
+    public EditoreDTO updateDTO(@RequestBody EditoreDTO editoreDTO){
+        return editoreService.updateEditoreDTO(editoreDTO);
     }
 }

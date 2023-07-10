@@ -1,5 +1,6 @@
 package it.biblioteca.progettoBiblioteca.controller;
 
+import it.biblioteca.progettoBiblioteca.dto.AutoreDTO;
 import it.biblioteca.progettoBiblioteca.entities.AutoreEntity;
 import it.biblioteca.progettoBiblioteca.service.AutoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,25 @@ public class AutoreController {
     @GetMapping("/autori-da/{id}")
     public List<AutoreEntity> getAutoriListDaID(@PathVariable Long id){
         return autoreService.getAutoriListDaID(id);
+    }
+
+    @GetMapping("/autoriDTO")
+    public List<AutoreDTO> getAutoriDTO(){
+        return autoreService.getAutoreDTO();
+    }
+
+    @GetMapping("/DTO/{id}")
+    public AutoreDTO getDTOById(@PathVariable Long id){
+        return autoreService.getAutoreDTOById(id);
+    }
+
+    @PostMapping("/saveDTO")
+    public AutoreDTO saveAutoreDTO(@RequestBody AutoreDTO autoreDTO){
+        return autoreService.saveAutoreDTO(autoreDTO);
+    }
+
+    @PutMapping("/updateDTO")
+    public AutoreDTO updateDTO(@RequestBody AutoreDTO autoreDTO){
+        return autoreService.updateAutoreDTO(autoreDTO);
     }
 }

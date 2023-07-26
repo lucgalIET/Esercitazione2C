@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+</head>
+<body>
+    
+<h1>Welcome to homepage</h1>
+
+<button onclick="getAllAutori()">Cliccami per visualizzare tutti gli autori!</button>
+<div class="tabella1">
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Data di nascita</th>
+            <th>Nazione</th>
+        </tr>
+        </thead>
+        <tbody id="listaAutori"></tbody>
+
+    </table>
+</div>
+<button onclick="getLibri()">Cliccami per visualizzare tutti i libri!</button>
+<div class="tabella2">
+    <table>
+        <thead>
+        <tr>
+            <th>Titolo</th>
+            <th>ISBN</th>
+            <th>Genere</th>
+        </tr>
+        </thead>
+        <tbody id="listaLibri"></tbody>
+    </table>
+</div>
+<button onclick="getEditori()">Cliccami per visualizzare tutti gli editori!</button>
+<div class="tabella3">
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>PartitaIva</th>
+            <th>Contatto</th>
+        </tr>
+        </thead>
+        <tbody id="listaEditori"></tbody>
+    </table>
+</div>
+<script>
+        function getAllAutori() {
+            fetch('/api/autore/autori')
+            .then(response => response.json())
+            .then(dati => {
+                const listaAutori = document.getElementById('listaAutori');
+                listaAutori.innerHTML = '';
+
+                dati.forEach(autori => {
+                    const righe = document.createElement('tr');
+                    righe.innerHTML = `
+                        <td>${autori.nome}</td>
+                        <td>${autori.cognome}</td>
+                        <td>${autori.dataDiNascita}</td>
+                        <td>${autori.nazione}</td>
+                        `;
+                    listaAutori.appendChild(righe);
+                });
+            });
+        }
+    </script>
+<script>
+        function getLibri() {
+            fetch('/api/libro/libri')
+            .then(response => response.json())
+            .then(dati => {
+                const listaLibri = document.getElementById('listaLibri');
+                listaLibri.innerHTML = '';
+
+                dati.forEach(libri => {
+                    const righe = document.createElement('tr');
+                    righe.innerHTML = `
+                        <td>${libri.titolo}</td>
+                        <td>${libri.isbn}</td>
+                        <td>${libri.genere}</td>
+                        `;
+                    listaLibri.appendChild(righe);
+                });
+            });
+        }
+    </script>
+<script>
+        function getEditori() {
+            fetch('/api/editore/editori')
+            .then(response => response.json())
+            .then(dati => {
+                const listaEditori = document.getElementById('listaEditori');
+                listaEditori.innerHTML = '';
+
+                dati.forEach(editori => {
+                    const righe = document.createElement('tr');
+                    righe.innerHTML = `
+                        <td>${editori.nome}</td>
+                        <td>${editori.partitaIva}</td>
+                        <td>${editori.contatto}</td>
+                        `;
+                    listaEditori.appendChild(righe);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

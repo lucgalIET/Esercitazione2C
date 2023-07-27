@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/editore")
+@CrossOrigin(origins = "**")
 public class EditoreController {
 
     @Autowired
